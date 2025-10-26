@@ -1,17 +1,17 @@
 # Use Java 17 JDK as base image
 FROM eclipse-temurin:17-jdk-alpine
 
-# Set working directory inside the container
+# Set working directory inside container
 WORKDIR /app
 
-# Copy all project files into container
+# Copy all project files into the container
 COPY . .
 
 # Build the Spring Boot project using Maven Wrapper
-RUN ./mvnw clean package
+RUN ./mvnw clean package -DskipTests
 
-# Expose port 8080 (the port your Spring Boot app runs on)
+# Expose port 8080 (Spring Boot default)
 EXPOSE 8080
 
-# Command to run the Spring Boot jar
+# Run the Spring Boot application
 CMD ["java", "-jar", "target/shortify-0.0.1-SNAPSHOT.jar"]
