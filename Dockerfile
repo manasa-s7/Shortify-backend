@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy all project files into the container
 COPY . .
 
+# Make mvnw executable
+RUN chmod +x ./mvnw
+
 # Build the Spring Boot project using Maven Wrapper
 RUN ./mvnw clean package -DskipTests
 
